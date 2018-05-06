@@ -2,16 +2,16 @@ version: '2'
 
 services:
   this_jup:
-    image: jupyter/scipy-notebook
+    build: docker/jupyter
     ports:
       - 8888:8888
     volumes:
       - .:/home/jovyan
 
-#  this_mongo:
-#    image: mongo
-#    volumes:
-#      - mongo_data:/data/db
-#
-#volumes:
-#  mongo_data:
+  this_postgres:
+    build: docker/postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
