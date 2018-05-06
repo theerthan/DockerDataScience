@@ -14,3 +14,19 @@ gcloud compute firewall-rules create ${VM_NAME}-fw-rules \
     --allow tcp:80,tcp:443,tcp:2376,tcp:8888 \
     --target-tags ${VM_NAME}
 
+gcloud compute ssh ${VM_NAME}
+
+At the GCE VM:
+=====
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+sudo reboot
+
+glcoud compute  ssh ${VM_NAME}
+docker pull jupyter/scipy-notebook
+docker run -p 8888:8888 -d jupyter/scipy-notebook
+docker exec -t $(docker ps -q) jupyter notebook list
+docker stats
+=====
+
+http://<public_ip>:8888/?token=24befa012a916be8a6db2854ca1c37f73c830d031a88cfd6
