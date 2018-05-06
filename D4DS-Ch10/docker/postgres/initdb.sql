@@ -1,5 +1,5 @@
 CREATE TABLE adult (
-    age  INTEGER,
+    age INTEGER,
     workclass TEXT,
     fnlwgt INTEGER,
     education TEXT,
